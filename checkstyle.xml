@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+        "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+    <property name="fileExtensions" value="java, properties, xml"/>
+
+    <module name="SuppressionFilter">
+        <property name="file" value="suppressions.xml"/>
+        <property name="optional" value="false"/>
+    </module>
+
+    <module name="JavadocPackage">
+        <property name="severity" value="ignore"/> <!-- Cloudaware: we don't need package-info.java -->
+    </module>
+    <module name="NewlineAtEndOfFile"/>
+    <module name="Translation"/>
+    <module name="FileLength"/>
+    <module name="FileTabCharacter">
+        <property name="eachLine" value="true"/>
+    </module>
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$"/>
+        <property name="minimum" value="0"/>
+        <property name="maximum" value="0"/>
+        <property name="message" value="Line has trailing spaces."/>
+    </module>
+
+    <module name="TreeWalker">
+        <module name="JavadocMethod">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: not now -->
+        </module>
+        <module name="JavadocType">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: not now -->
+        </module>
+        <module name="JavadocVariable">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: not now -->
+        </module>
+        <module name="JavadocStyle">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: not now -->
+        </module>
+        <module name="ConstantName">
+            <property name="format" value="^(_|([A-Z][A-Z0-9]*(_[A-Z0-9]+)*)[_]?)$"/> <!-- Cloudaware: we use "_"-->
+        </module>
+        <module name="LocalFinalVariableName">
+            <property name="format" value="^(_|[a-z][a-zA-Z0-9]*[_]?)$"/> <!-- Cloudaware: we use "_" and "asdsad_" -->
+        </module>
+        <module name="LocalVariableName">
+            <property name="format" value="^(_|[a-z][a-zA-Z0-9]*[_]?)$"/> <!-- Cloudaware: we use "_" and "asdsad_" -->
+        </module>
+        <module name="MemberName">
+            <property name="format" value="^(_|_id|[a-z][a-zA-Z0-9]*[_]?)$"/> <!-- Cloudaware: we use "_" and "asdsad_" -->
+        </module>
+        <module name="MethodName">
+            <property name="format" value="^(_|[a-z][a-zA-Z0-9]*[_]?)$"/> <!-- Cloudaware: we use "_" and "asdsad_" -->
+        </module>
+        <module name="PackageName">
+            <property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
+        </module>
+        <module name="ParameterName">
+            <property name="format" value="^(_|[a-z][a-zA-Z0-9]*[_]?)$"/> <!-- Cloudaware: we use "_" and "asdsad_" -->
+        </module>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport"> <!-- defaults to sun.* packages -->
+            <property name="illegalPkgs" value="sun"/>
+            <property name="illegalPkgs" value="com.google.api.client.repackaged"/>
+            <property name="illegalPkgs" value="com.google.cloud.dataflow.sdk.repackaged"/>
+            <property name="illegalPkgs" value="com.google.appengine.labs.repackaged"/>
+            <property name="illegalPkgs" value="com.google.appengine.repackaged"/>
+        </module>
+        <module name="RedundantImport"/>
+        <module name="UnusedImports">
+            <property name="processJavadoc" value="false"/>
+        </module>
+        <module name="LineLength">
+            <property name="max" value="200"/> <!-- Cloudaware: 80 is too narrow -->
+            <property name="ignorePattern" value="^\s*//.*$"/>
+        </module>
+        <module name="MethodLength">
+            <property name="max" value="200"/> <!-- Cloudaware: 150 is too small-->
+        </module>
+        <module name="ParameterNumber">
+            <property name="max" value="20"/> <!-- Cloudaware: 7 is too low -->
+        </module>
+        <module name="EmptyForIteratorPad"/>
+        <module name="GenericWhitespace"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+        <module name="AvoidNestedBlocks">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: it's ok for us -->
+        </module>
+        <module name="EmptyBlock">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: it's ok for us -->
+        </module>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+        <module name="AvoidInlineConditionals">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: we use ?: operators -->
+        </module>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="HiddenField">
+            <property name="ignoreConstructorParameter" value="true"/> <!-- Cloudaware: we use same names in constructors -->
+            <property name="ignoreSetter" value="true"/> <!-- Cloudaware: we use same names in setters -->
+            <property name="setterCanReturnItsClass" value="true"/>
+        </module>
+        <module name="IllegalInstantiation"/>
+        <module name="InnerAssignment"/>
+        <module name="MagicNumber">
+            <property name="ignoreNumbers"
+                      value="-1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9"/> <!-- Cloudaware: add 24, 60 and 1000 for timestamps -->
+            <property name="ignoreHashCodeMethod" value="true"/> <!-- Cloudaware: for auto-generated hashCode -->
+            <property name="ignoreAnnotation" value="true"/> <!-- Cloudaware: e.g. ORMLite annotatios -->
+        </module>
+        <module name="MissingSwitchDefault"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="DesignForExtension">
+            <property name="ignoredAnnotations" value="Test, Before, After, BeforeClass, AfterClass, Override"/> <!-- Cloudaware: Override added -->
+        </module>
+        <module name="FinalClass"/>
+        <module name="HideUtilityClassConstructor"/>
+        <module name="InterfaceIsType"/>
+        <module name="VisibilityModifier">
+            <property name="allowPublicImmutableFields" value="true"/> <!-- Cloudaware: we use "public final" for variables -->
+            <property name="protectedAllowed" value="true"/> <!-- Cloudaware: we use "protected" variables -->
+            <property name="packageAllowed" value="true"/> <!-- Cloudaware: we use "" visibility-->
+            <property name="ignoreAnnotationCanonicalNames" value="com.gigware.goldmine.IgnoreVisibility"/> <!-- Cloudaware: our custom annotation -->
+        </module>
+        <module name="ArrayTypeStyle"/>
+        <module name="FinalParameters"/>
+        <module name="TodoComment">
+            <property name="severity" value="ignore"/> <!-- Cloudaware: not interested -->
+        </module>
+        <module name="UpperEll"/>
+
+        <!-- Cloudaware extra checks -->
+        <module name="AnnotationLocation" />
+        <module name="AnnotationUseStyle" />
+        <module name="MissingDeprecated" />
+        <module name="MissingOverride" />
+        <module name="PackageAnnotation" />
+        <module name="SuppressWarnings" />
+        <module name="EmptyCatchBlock">
+            <property name="commentFormat" value="This is expected"/>
+            <property name="exceptionVariableName" value="expected|ignore"/>
+        </module>
+        <module name="InnerTypeLast" />
+        <module name="InterfaceIsType"/>
+        <module name="MutableException"/>
+        <module name="OneTopLevelClass"/>
+        <module name="CovariantEquals"/>
+        <module name="DeclarationOrder"/>
+        <module name="DefaultComesLast"/>
+        <module name="EqualsAvoidNull"/>
+        <module name="ExplicitInitialization"/>
+        <module name="FallThrough"/>
+        <module name="FinalLocalVariable">
+            <property name="validateEnhancedForLoopVariable" value="true"/>
+        </module>
+        <module name="IllegalThrows"/>
+        <module name="IllegalToken"/>
+        <module name="IllegalTokenText" />
+        <module name="IllegalType"/>
+        <module name="ModifiedControlVariable"/>
+        <!--<module name="MultipleStringLiterals"/>--> <!-- ?????? -->
+        <module name="MultipleVariableDeclarations"/>
+        <!--<module name="NoClone"/>-->
+        <module name="NoFinalizer"/>
+        <module name="OneStatementPerLine"/>
+        <module name="OverloadMethodsDeclarationOrder"/>
+        <module name="ParameterAssignment"/>
+        <module name="StringLiteralEquality"/>
+        <module name="UnnecessaryParentheses"/>
+        <module name="VariableDeclarationUsageDistance"/>
+        <module name="AvoidEscapedUnicodeCharacters"/>
+        <!--<module name="CommentsIndentation"/>--> <!-- ?????? -->
+        <module name="OuterTypeFilename"/>
+        <!--<module name="AbbreviationAsWordInName">-->
+            <!--<property name="ignoreFinal" value="false"/>-->
+            <!--<property name="allowedAbbreviationLength" value="1"/>-->
+        <!--</module>-->
+        <module name="CatchParameterName">
+            <property name="format" value="^(e|t|ex|[a-z][a-zA-Z]+)$"/>
+        </module>
+        <module name="ClassTypeParameterName">
+            <property name="format" value="(^[A-Z][0-9]?)$|([A-Z][a-zA-Z0-9]*[T]$)"/>
+        </module>
+        <module name="EmptyLineSeparator">
+            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+            <property name="allowMultipleEmptyLines" value="false" />
+            <property name="allowMultipleEmptyLinesInsideClassMembers" value="false" />
+        </module>
+
+    </module>
+
+</module>
