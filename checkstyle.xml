@@ -175,7 +175,11 @@
         <module name="IllegalThrows"/>
         <module name="IllegalToken"/>
         <module name="IllegalTokenText" />
-        <module name="IllegalType"/>
+        <module name="IllegalType">
+            <!-- Cloudaware: sometimes we want to inherit from HashMap, LinkedHashMap, LinkedHashSet and others classes. -->
+            <!-- Cloudaware: remove CLASS_DEF -->
+            <property name="tokens" value="ANNOTATION_FIELD_DEF, INTERFACE_DEF, METHOD_CALL, METHOD_DEF, METHOD_REF, PARAMETER_DEF, VARIABLE_DEF, PATTERN_VARIABLE_DEF, RECORD_DEF, RECORD_COMPONENT_DEF"/>
+        </module>
         <module name="ModifiedControlVariable"/>
         <!--<module name="MultipleStringLiterals"/>--> <!-- ?????? -->
         <module name="MultipleVariableDeclarations"/>
@@ -194,8 +198,8 @@
         <!--<module name="CommentsIndentation"/>--> <!-- ?????? -->
         <module name="OuterTypeFilename"/>
         <!--<module name="AbbreviationAsWordInName">-->
-            <!--<property name="ignoreFinal" value="false"/>-->
-            <!--<property name="allowedAbbreviationLength" value="1"/>-->
+        <!--<property name="ignoreFinal" value="false"/>-->
+        <!--<property name="allowedAbbreviationLength" value="1"/>-->
         <!--</module>-->
         <module name="CatchParameterName">
             <property name="format" value="^(e|t|ex|[a-z][a-zA-Z]+)$"/>
