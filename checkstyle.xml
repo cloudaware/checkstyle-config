@@ -33,7 +33,9 @@
         <property name="max" value="200"/> <!-- Cloudaware: 80 is too narrow -->
         <property name="ignorePattern" value="^\s*//.*$"/>
     </module>
+    <module name="SuppressWarningsFilter"/>
     <module name="TreeWalker">
+        <module name="SuppressWarningsHolder"/>
         <module name="JavadocMethod">
             <property name="severity" value="ignore"/> <!-- Cloudaware: not now -->
         </module>
