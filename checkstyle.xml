@@ -216,6 +216,14 @@
             <property name="allowMultipleEmptyLines" value="false" />
             <property name="allowMultipleEmptyLinesInsideClassMembers" value="false" />
         </module>
+        <module name="MatchXpath">
+            <property name="query" value="//SINGLE_LINE_COMMENT[./COMMENT_CONTENT[not(starts-with(@text, ' ')) and string-length(translate(@text, '\n\r', '')) > 0 and not(starts-with(@text, 'noinspection'))]]" />
+            <message key="matchxpath.match" value="Single line comment policy violated" />
+        </module>
+        <module name="MatchXpath">
+            <property name="query" value="//SINGLE_LINE_COMMENT[./COMMENT_CONTENT[starts-with(normalize-space(upper-case(@text)), 'TODO') and not(starts-with(@text, ' TODO: '))]]" />
+            <message key="matchxpath.match" value="TODO policy violated. The comment should starts with '// TODO: '" />
+        </module>
 
     </module>
 
