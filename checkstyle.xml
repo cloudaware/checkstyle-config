@@ -80,6 +80,7 @@
             <property name="illegalPkgs" value="com.google.appengine.repackaged"/>
             <property name="illegalPkgs" value="javax.inject"/>
             <property name="illegalPkgs" value="javax.servlet"/>
+            <property name="illegalPkgs" value="javax.validation"/>
         </module>
         <module name="RedundantImport"/>
         <module name="UnusedImports">
